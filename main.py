@@ -2,7 +2,9 @@ import cv2 as cv
 import numpy as np
 from palette import colors
 import time
- 
+import os
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
 cap = cv.VideoCapture(0) #webcam n#0
 whT = 320 #risoluzione quadrata
 confThreshold = 0.4 # soglia riconoscimento
@@ -10,14 +12,14 @@ nmsThreshold = 0.2  #non maximum suppression,fattore che elimina i box di troppo
  
 #### LOAD MODEL
 ## Coco Names
-classesFile = "coco.names.txt"
+classesFile = os.path.join(THIS_FOLDER,"coco.names.txt" )
 classNames = []
 with open(classesFile, 'rt') as f:
     classNames = f.read().rstrip('\n').split('\n')
 print(classNames)
 ## Model Files
-modelConfiguration = "yolov3-320.cfg"
-modelWeights = "yolov3-320.weights"
+modelConfiguration = os.path.join(THIS_FOLDER,"yolov3-320.cfg")
+modelWeights = os.path.join(THIS_FOLDER,"yolov3-320.weights")
 
 
 """creazione della rete convoluzionale con il file .cfg di configurazione
