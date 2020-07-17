@@ -1,6 +1,6 @@
 person
 bicycle
-car1
+car
 motorbike
 aeroplane
 bus
